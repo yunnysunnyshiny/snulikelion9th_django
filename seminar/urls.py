@@ -18,6 +18,9 @@ from django.urls import path
 from django.conf.urls import include
 import blogPosts.views
 import accounts.views
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,4 +30,4 @@ urlpatterns = [
     path('accounts/signup/', accounts.views.signup, name='signup'),
     path('accounts/myinfo/', accounts.views.myinfo, name='myinfo'),
     path('tags/', include('tags.urls')),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
